@@ -8,6 +8,19 @@
  * Service in the appAngularjsApp.
  */
 angular.module('appAngularjsApp')
-  .service('userService', function () {
-    // AngularJS will instantiate a singleton by calling "new" on this function
+  .service('userService', function ($http) {
+
+    return {
+      // ======================= Authentication Session ===========================
+      login: function (data) {
+        return $http({
+          method: 'POST',
+          url: 'http://userservice.staging.tangentmicroservices.com/api-token-auth/',
+          data: data,
+          headers: { 
+            'Content-Type': 'application/json' 
+          }
+        });
+      }
+    };
   });
