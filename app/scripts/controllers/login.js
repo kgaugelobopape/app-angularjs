@@ -8,10 +8,17 @@
  * Controller of the appAngularjsApp
  */
 angular.module('appAngularjsApp')
-  .controller('LoginCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('LoginCtrl', function ($scope, userService) {
+
+    $scope.data = {};
+    
+    $scope.authenticate = function () {
+      userService.login($scope.data)
+        .success(function (data) {
+          console.log(data);
+        })
+        .error(function (data) {
+          console.log(data);
+        });
+    };
   });
