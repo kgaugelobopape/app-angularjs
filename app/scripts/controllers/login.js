@@ -11,14 +11,16 @@ angular.module('appAngularjsApp')
   .controller('LoginCtrl', function ($scope, userService) {
 
     $scope.data = {};
-    
+
     $scope.authenticate = function () {
       userService.login($scope.data)
         .success(function (data) {
-          console.log(data);
+          $scope.token = data.token;
+          $scope.error = '';
         })
         .error(function (data) {
-          console.log(data);
+            $scope.error = data.non_field_errors;
+            $scope.token = '';
         });
     };
   });
