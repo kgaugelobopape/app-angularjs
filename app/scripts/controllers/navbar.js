@@ -8,7 +8,7 @@
  * Controller of the appAngularjsApp
  */
 angular.module('appAngularjsApp')
-  .controller('NavbarCtrl', function ($scope) {
+  .controller('NavbarCtrl', function ($scope, localStorageService) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
