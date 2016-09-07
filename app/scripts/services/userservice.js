@@ -13,12 +13,9 @@ angular.module('appAngularjsApp')
     return {
       // ======================= Authentication Session ===========================
       login: function (data) {
-        return $http({
-          method: 'POST',
-          url: 'http://userservice.staging.tangentmicroservices.com/api-token-auth/',
-          data: data,
-          headers: { 
-            'Content-Type': 'application/json' 
+        return $http.post('http://userservice.staging.tangentmicroservices.com/api-token-auth/', data , {
+          headers: {
+            'Content-Type': 'application/json'
           }
         });
       }
