@@ -8,10 +8,6 @@
  * Controller of the appAngularjsApp
  */
 angular.module('appAngularjsApp')
-  .controller('ProjectsCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('ProjectsCtrl', function ($scope, localStorageService) {
+    $scope.token = localStorageService.get('token');
   });
