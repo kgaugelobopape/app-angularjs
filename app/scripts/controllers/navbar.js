@@ -15,5 +15,7 @@ angular.module('appAngularjsApp')
 
     $scope.logout = function(){
       localStorageService.remove('token');
+
+      $location.path('/login').replace();
     };
   });
