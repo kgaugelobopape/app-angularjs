@@ -15,15 +15,11 @@ angular.module('appAngularjsApp')
     $scope.authenticate = function () {
       userService.login($scope.data)
         .success(function (data) {
-          $scope.token = data.token;
-          $scope.error = '';
           localStorageService.set('token', data.token);
           $location.path('/projects').replace();
-          
         })
         .error(function (data) {
             $scope.error = data.non_field_errors;
-            $scope.token = '';
         });
     };
   });
