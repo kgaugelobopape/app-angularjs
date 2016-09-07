@@ -30,7 +30,7 @@ angular
                             deferred.resolve();
                         }
 
-                        return deferred.promise();
+                        return deferred.promise;
                     }]
                 }
             })
