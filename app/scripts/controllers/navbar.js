@@ -12,4 +12,8 @@ angular.module('appAngularjsApp')
     if(localStorageService.get('token') !== null){
       $scope.token = localStorageService.get('token');
     }
+
+    $scope.logout = function(){
+      localStorageService.remove('token');
+    };
   });
