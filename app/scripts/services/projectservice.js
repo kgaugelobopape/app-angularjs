@@ -8,6 +8,6 @@
  * Service in the appAngularjsApp.
  */
 angular.module('appAngularjsApp')
-  .service('projectService', function ($http) {
+  .service('projectService', function ($http, localStorageService) {
     
   });
