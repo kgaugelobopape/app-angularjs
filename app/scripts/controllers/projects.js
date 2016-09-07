@@ -22,7 +22,7 @@ angular.module('appAngularjsApp')
           });
     }
 
-    $scope.viewproject = function(pk){
-
+    $scope.editProject = function(pk){
+      
     };
   });
