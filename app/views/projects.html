@@ -10,29 +10,28 @@
                     <th>End Date</th>
                     <th>is Billable</th>
                     <th>is Active</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="project in projects">
                     <td><a href="" ng-click="viewproject(projeck.pk)">{{ project.title }}</a></td>
                     <td>{{ project.description }}</td>
-                    <td>{{ project.start_date }}</td>
-                    <td>{{ project.end_date }}</td>
+                    <td>{{ project.start_date | date }}</td>
+                    <td>{{ project.end_date | date }}</td>
                     <td>
-                        <span class="badge" ng-if="project.is_billable">
-                            <i class="glyphicon glyphicon-ok-circle"></i>
-                        </span> 
-                        <span class="badge" ng-if="!project.is_billable">
-                            <i class="glyphicon glyphicon-remove-circle"></i>
-                        </span>
+                        <span ng-if="project.is_billable" class="glyphicon glyphicon-ok-circle text-success"></span> 
+                        <span ng-if="!project.is_billable" class="glyphicon glyphicon-remove-circle text-danger"></span>
                     </td>
                     <td>
-                        <span class="badge" ng-if="project.is_active">
-                            <i class="glyphicon glyphicon-ok-circle"></i>
-                        </span>
-                        <span class="badge" ng-if="!project.is_active">
-                            <i class="glyphicon glyphicon-remove-circle"></i>
-                        </span>
+                        <span ng-if="project.is_active" class="glyphicon glyphicon-ok-circle text-success"></span>
+                        <span ng-if="!project.is_active" class="glyphicon glyphicon-remove-circle text-danger"></span>
+                    </td>
+                    <td>
+                        <ul class="list-inline">
+                            <li><a ng-href="#/project/edit?pk={{project.pk}}" ng-click="$event.stopPropagation();" title="Edit"><i class="glyphicon glyphicon-edit"></i></a></li>
+                            <li><a href="" ng-click="deleteProject(project.pk)" title="Delete"><i class="glyphicon glyphicon-trash"></i></a></li>
+                        </ul>
                     </td>
                 </tr>
             </tbody>
