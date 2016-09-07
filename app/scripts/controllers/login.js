@@ -8,7 +8,7 @@
  * Controller of the appAngularjsApp
  */
 angular.module('appAngularjsApp')
-  .controller('LoginCtrl', function ($scope, userService) {
+  .controller('LoginCtrl', function ($scope, userService, localStorageService, $location) {
 
     $scope.data = {};
 
@@ -17,6 +17,9 @@ angular.module('appAngularjsApp')
         .success(function (data) {
           $scope.token = data.token;
           $scope.error = '';
+          localStorageService.set('token', data.token);
+          $location.path('/projects').replace();
+          
         })
         .error(function (data) {
             $scope.error = data.non_field_errors;
