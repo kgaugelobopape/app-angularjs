@@ -9,5 +9,7 @@
  */
 angular.module('appAngularjsApp')
   .controller('NavbarCtrl', function ($scope, localStorageService) {
-    $scope.token = localStorageService.get('token');
+    if(localStorageService.get('token') !== null){
+      $scope.token = localStorageService.get('token');
+    }
   });
