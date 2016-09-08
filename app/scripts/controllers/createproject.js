@@ -8,7 +8,7 @@
  * Controller of the appAngularjsApp
  */
 angular.module('appAngularjsApp')
-  .controller('CreateprojectCtrl', function ($scope) {
+  .controller('CreateprojectCtrl', function ($scope, $modalInstance) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
