@@ -1,6 +1,9 @@
 <div class="row" ng-controller="ProjectsCtrl" ng-cloak>
     <div class="col-md-12">
-        <div class="panel panel-default">
+        <div class="well well-sm" ng-if="ploading">
+            <p>Loading Projects....</p>
+        </div>
+        <div class="panel panel-default" ng-if="!ploading">
             <div class="panel-heading">Projects
                 <a href="" ng-click="openModal($event,0,'create')" class="btn btn-success btn-xs pull-right">Add Vew Project</a>
             </div>
@@ -50,7 +53,10 @@
     </div>
 
     <div class="col-md-12">
-        <div class="panel panel-default">
+        <div class="well well-sm" ng-if="tloading">
+            <p>Loading Tasks....</p>
+        </div>
+        <div class="panel panel-default" ng-if="!tloading">
             <div class="panel-heading">Project Task</div>
             <table class="table table-striped table-condensed table-bordered">
                 <thead>
