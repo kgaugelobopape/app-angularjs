@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h3 class="modal-title">Delete Project: {{project.title}}</h3>
+</div>
+
+<div class="modal-body">
+    <div ng-if="error" class="alert alert-danger" role="alert">
+        {{error}}
+    </div>
+    <div ng-if="!error">
+        <p>Are you sure you want to delete project : <strong>{{project.title}}</strong></p>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="pull-right">
+        <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-danger" ng-disabled="loading || deleting" ng-click="submit()">{{deleting ? 'Deleting...' : 'Delete'}}
+        </button>
+    </div>
+</div>
