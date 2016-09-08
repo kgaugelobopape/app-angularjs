@@ -8,7 +8,7 @@
  * Controller of the appAngularjsApp
  */
 angular.module('appAngularjsApp')
-  .controller('CreateprojectCtrl', function ($scope, $modalInstance, projectService) {
+  .controller('CreateprojectCtrl', function ($scope, $modalInstance, projectService, $timeout,$route) {
     $scope.loading = false;
     $scope.creating = false;
     $scope.error = '';
@@ -34,6 +34,10 @@ angular.module('appAngularjsApp')
           $scope.creating = false;
           $scope.success = true;
           $scope.project = null;
+          $timeout(function () {
+            $modalInstance.dismiss(true);
+            $route.reload();
+          }, 700);
         })
         .error(function(data){
           $scope.creating = false;
