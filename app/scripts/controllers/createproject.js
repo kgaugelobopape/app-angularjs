@@ -9,6 +9,10 @@
  */
 angular.module('appAngularjsApp')
   .controller('CreateprojectCtrl', function ($scope, $modalInstance, projectService) {
+    $scope.loading = false;
+    $scope.creating = false;
+    $scope.error = '';
+    $scope.success = '';
 
     $scope.cancel = function () {
       $modalInstance.dismiss('cancel');
@@ -21,5 +25,19 @@ angular.module('appAngularjsApp')
       end_date: '',
       is_billable: '',
       is_active: ''
+    };
+
+    $scope.submit = function () {
+      $scope.creating = true;
+      projectService.postProject($scope.project)
+        .success(function (data) {
+          $scope.creating = false;
+          $scope.success = data;
+          // $modalInstance.close(true);
+        })
+        .error(function(data){
+          $scope.creating = false;
+          $scope.error = data;
+        });
     };
   });
