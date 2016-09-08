@@ -8,14 +8,20 @@
  * Controller of the appAngularjsApp
  */
 angular.module('appAngularjsApp')
-  .controller('NavbarCtrl', function ($scope, localStorageService, $location) {
+  .controller('NavbarCtrl', function ($scope, localStorageService, $location, userService, $route) {
     if(localStorageService.get('token') !== null){
-      $scope.token = localStorageService.get('token');
+      userService.getProfile()
+        .success(function(data){
+          $scope.user = data;
+        })
+        .error(function(data){
+          console.log(data);
+        });
     }
 
     $scope.logout = function(){
       localStorageService.remove('token');
-
+      $route.reload();
       $location.path('/login').replace();
     };
   });
