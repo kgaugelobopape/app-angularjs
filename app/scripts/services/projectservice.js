@@ -13,8 +13,6 @@ angular.module('appAngularjsApp')
     return {
       // ======================= Authentication Session ===========================
       getProjects: function () {
-        var token = localStorageService.get('token');
-
         return $http.get('http://projectservice.staging.tangentmicroservices.com/api/v1/projects/', {
           headers: {
             'Content-Type': 'application/json',
@@ -24,7 +22,7 @@ angular.module('appAngularjsApp')
       },
 
       getProject: function (pk) {
-        return $http.get('http://projectservice.staging.tangentmicroservices.com:80/api/v1/projects/' + pk, {
+        return $http.get('http://projectservice.staging.tangentmicroservices.com/api/v1/projects/' + pk + '/', {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Token ' + localStorageService.get('token')
@@ -33,7 +31,7 @@ angular.module('appAngularjsApp')
       },
 
       putProject: function (pk, data) {
-        return $http.put('http://projectservice.staging.tangentmicroservices.com:80/api/v1/projects/' + pk, data, {
+        return $http.put('http://projectservice.staging.tangentmicroservices.com:80/api/v1/projects/' + pk + '/', data, {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Token ' + localStorageService.get('token')
@@ -42,7 +40,7 @@ angular.module('appAngularjsApp')
       },
 
       deleteProject: function (pk) {
-        return $http.delete('http://projectservice.staging.tangentmicroservices.com:80/api/v1/projects/' + pk, {
+        return $http.delete('http://projectservice.staging.tangentmicroservices.com:80/api/v1/projects/' + pk +'/', {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Token ' + localStorageService.get('token')
