@@ -8,9 +8,9 @@
  * Controller of the appAngularjsApp
  */
 angular.module('appAngularjsApp')
-  .controller('EditprojectCtrl', function ($scope, $modalInstance, projectService, pk) {
+  .controller('EditprojectCtrl', function ($scope, $modalInstance, projectService, pk, $route, $timeout) {
 
-    $scope.loading = false;
+    $scope.loading = true;
     $scope.updating = false;
     $scope.error = '';
     $scope.pk = pk;
@@ -18,12 +18,12 @@ angular.module('appAngularjsApp')
 
     $scope.project = {
       pk: '',
-      title:'',
-      description:'',
-      start_date:'',
-      end_date:'',
-      is_billable:'',
-      is_active:''
+      title: '',
+      description: '',
+      start_date: '',
+      end_date: '',
+      is_billable: '',
+      is_active: ''
     };
 
     $scope.cancel = function () {
@@ -32,8 +32,10 @@ angular.module('appAngularjsApp')
 
     projectService.getProject($scope.pk)
       .success(function (data) {
+        $scope.loading = false;
         $scope.project = data;
       }).error(function (data) {
+        $scope.loading = false;
         console.log(data);
       });
 
@@ -45,6 +47,11 @@ angular.module('appAngularjsApp')
         .success(function () {
           $scope.updating = false;
           $scope.success = true;
+
+          $timeout(function () {
+            $modalInstance.dismiss(true);
+            $route.reload();
+          }, 700);
         })
         .error(function (data) {
           $scope.updating = false;
