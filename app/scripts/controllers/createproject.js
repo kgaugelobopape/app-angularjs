@@ -30,10 +30,10 @@ angular.module('appAngularjsApp')
     $scope.submit = function () {
       $scope.creating = true;
       projectService.postProject($scope.project)
-        .success(function (data) {
+        .success(function () {
           $scope.creating = false;
-          $scope.success = data;
-          // $modalInstance.close(true);
+          $scope.success = true;
+          $modalInstance.close(true);
         })
         .error(function(data){
           $scope.creating = false;
