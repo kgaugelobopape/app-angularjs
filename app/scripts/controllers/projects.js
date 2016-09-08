@@ -44,6 +44,12 @@ angular.module('appAngularjsApp')
           }
         });
       }
+      else if (type === 'create') {
+        $scope.modalInstance = $modal.open({
+          templateUrl: 'views/modal/create.html',
+          controller: 'CreateprojectCtrl'
+        });
+      }
       else {
         $scope.modalInstance = $modal.open({
           templateUrl: 'views/modal/delete.html',
