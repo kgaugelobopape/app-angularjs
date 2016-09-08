@@ -8,7 +8,7 @@
  * Controller of the appAngularjsApp
  */
 angular.module('appAngularjsApp')
-  .controller('CreateprojectCtrl', function ($scope, $modalInstance) {
+  .controller('CreateprojectCtrl', function ($scope, $modalInstance, projectService) {
 
     $scope.cancel = function () {
       $modalInstance.dismiss('cancel');
