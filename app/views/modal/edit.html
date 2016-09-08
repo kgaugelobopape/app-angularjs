@@ -1,0 +1,46 @@
+<div class="modal-header">
+    <h3 class="modal-title">Edit Project: {{project.title}}</h3>
+</div>
+
+<div class="modal-body">
+    <div ng-if="error" class="alert alert-danger" role="alert">
+        {{error}}
+    </div>
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" ng-model="project.title">
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" ng-model="project.description">
+    </div>
+    <div class="form-group">
+        <label for="start_date">Start Date</label>
+        <input type="date" class="form-control" ng-model="project.start_date">
+    </div>
+    <div class="form-group">
+        <label for="end_date">End Date</label>
+        <input type="date" class="form-control" ng-model="project.end_date">
+    </div>
+    <div class="form-group">
+        <label for="is_billable">Is Billable</label>
+        <select ng-model="project.is_billable">
+            <option ng-value="true" ng-selected="selected">True</option>
+            <option ng-value="false">False</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="is_active">Is Active</label>
+        <select ng-model="project.is_active">
+            <option ng-value="true" ng-selected="selected">True</option>
+            <option ng-value="false">False</option>
+        </select>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="pull-right">
+        <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary" ng-disabled="loading || updating" ng-click="submit()">{{updating ? 'Updating...' : 'Update'}}
+        </button>
+    </div>
+</div>
