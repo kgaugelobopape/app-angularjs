@@ -9,8 +9,17 @@
  */
 angular.module('appAngularjsApp')
   .controller('CreateprojectCtrl', function ($scope, $modalInstance) {
-    
+
     $scope.cancel = function () {
       $modalInstance.dismiss('cancel');
+    };
+
+    $scope.project = {
+      title: '',
+      description: '',
+      start_date: '',
+      end_date: '',
+      is_billable: '',
+      is_active: ''
     };
   });
