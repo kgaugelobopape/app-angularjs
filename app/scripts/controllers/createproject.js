@@ -33,7 +33,7 @@ angular.module('appAngularjsApp')
         .success(function () {
           $scope.creating = false;
           $scope.success = true;
-          $modalInstance.close(true);
+          $scope.project = null;
         })
         .error(function(data){
           $scope.creating = false;
