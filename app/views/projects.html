@@ -16,7 +16,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="project in projects">
-                        <td><a href="" ng-click="viewproject(projeck.pk)">{{ project.title }}</a></td>
+                        <td><a href="{{project.pk}}" ng-click="viewproject(project.pk)">{{ project.title }}</a></td>
                         <td>{{ project.description }}</td>
                         <td>{{ (project.start_date | date : "MMM. d, y") || '(None)' }}</td>
                         <td>{{ (project.end_date | date: "MMM. d, y") || '(None)' }}</td>
@@ -30,8 +30,8 @@
                         </td>
                         <td>
                             <ul class="list-inline">
-                                <li><a ng-href="#/project/edit?pk={{project.pk}}" ng-click="$event.stopPropagation();" title="Edit"><i class="glyphicon glyphicon-edit"></i></a></li>
-                                <li><a href="" ng-click="deleteProject(project.pk)" title="Delete"><i class="glyphicon glyphicon-trash"></i></a></li>
+                                <li><a href="" ng-click="openModal($event,project.pk,'edit')" title="Edit"><i class="glyphicon glyphicon-edit"></i></a></li>
+                                <li><a href="" ng-click="openModal($event,project.pk,'delete')" title="Delete"><i class="glyphicon glyphicon-trash"></i></a></li>
                             </ul>
                         </td>
                     </tr>
