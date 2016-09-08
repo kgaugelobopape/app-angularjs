@@ -8,7 +8,7 @@
  * Controller of the appAngularjsApp
  */
 angular.module('appAngularjsApp')
-  .controller('DeleteprojectCtrl', function ($scope, $modalInstance, projectService, pk) {
+  .controller('DeleteprojectCtrl', function ($scope, $modalInstance, projectService, pk, $timeout, $route) {
     $scope.loading = false;
     $scope.deleting = false;
     $scope.error = '';
@@ -32,7 +32,11 @@ angular.module('appAngularjsApp')
       projectService.deleteProject($scope.pk)
         .success(function () {
           $scope.deleting = false;
-          $modalInstance.close(true);
+          $scope.success = true;
+          $timeout(function () {
+            $modalInstance.dismiss(true);
+            $route.reload();
+          }, 700);
         })
         .error(function (data) {
           $scope.deleting = false;
