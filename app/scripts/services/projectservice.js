@@ -32,6 +32,15 @@ angular.module('appAngularjsApp')
         });
       },
 
+      putProject: function (pk, data) {
+        return $http.get('http://projectservice.staging.tangentmicroservices.com:80/api/v1/projects/' + pk, data, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Token ' + localStorageService.get('token')
+          }
+        });
+      },
+
       getTasks: function () {
         return $http.get('http://projectservice.staging.tangentmicroservices.com/api/v1/tasks/', {
           headers: {
