@@ -6,22 +6,22 @@
     <div ng-if="error" class="alert alert-danger" role="alert">
         {{error}}
     </div>
-    <div class='col-sm-12'>
+    <div class="col-sm-12">
         <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" ng-model="project.title" required>
         </div>
     </div>
-    <div class='col-sm-12'>
+    <div class="col-sm-12">
         <div class="form-group">
             <label for="description">Description</label>
             <input type="text" class="form-control" ng-model="project.description" required>
         </div>
     </div>
-    <div class='col-sm-6'>
+    <div class="col-sm-6">
         <div class="form-group">
             <label for="start_date">Start Date</label>
-            <div class='input-group date'>
+            <div class="input-group date">
                 <input type="text" class="form-control" id="datetimepicker1" ng-model="project.start_date" required>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
@@ -29,10 +29,10 @@
             </div>
         </div>
     </div>
-    <div class='col-sm-6'>
+    <div class="col-sm-6">
         <div class="form-group">
             <label for="end_date">End Date</label>
-            <div class='input-group date'>
+            <div class="input-group date">
                 <input type="text" class="form-control" id="datetimepicker2" ng-model="project.end_date">
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
@@ -40,7 +40,7 @@
             </div>
         </div>
     </div>
-    <div class='col-sm-6'>
+    <div class="col-sm-6">
         <div class="form-group">
             <label for="is_billable">Is Billable</label>
             <select ng-model="project.is_billable">
@@ -49,10 +49,10 @@
             </select>
         </div>
     </div>
-    <div class='col-sm-6'>
+    <div class="col-sm-6">
         <div class="form-group">
             <label for="is_active">Is Active</label>
-                <select ng-model="project.is_active">
+            <select ng-model="project.is_active">
                 <option ng-value="true">True</option>
                 <option ng-value="false">False</option>
             </select>
@@ -68,6 +68,7 @@
 </div>
 <script type="text/javascript">
     $(function() {
-      $('#datetimepicker1').datetimepicker();
+        $('#datetimepicker1').datetimepicker();
+        $('#datetimepicker2').datetimepicker();
     });
-  </script>
+</script>
