@@ -14,6 +14,7 @@ angular.module('appAngularjsApp')
     $scope.updating = false;
     $scope.error = '';
     $scope.pk = pk;
+    $scope.success = '';
 
     $scope.project = {
       pk: '',
@@ -43,7 +44,7 @@ angular.module('appAngularjsApp')
       projectService.putProject($scope.pk, $scope.project)
         .success(function () {
           $scope.updating = false;
-          $modalInstance.close(true);
+          $scope.success = true;
         })
         .error(function (data) {
           $scope.updating = false;
