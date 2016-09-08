@@ -9,22 +9,27 @@
  */
 angular.module('appAngularjsApp')
   .controller('ProjectsCtrl', function ($scope, localStorageService, projectService, $modal) {
-
+    $scope.ploading = true;
+    $scope.tloading = true;
     $scope.token = localStorageService.get('token');
 
     projectService.getProjects()
       .success(function (data) {
         $scope.projects = data;
+        $scope.ploading = false;
       })
       .error(function (data) {
+        $scope.lpoading = false;
         console.log(data);
       });
 
     projectService.getTasks()
       .success(function (data) {
+        $scope.tloading = false;
         $scope.tasks = data;
       })
       .error(function (data) {
+        $scope.tloading = false;
         console.log(data);
       });
 
@@ -64,9 +69,7 @@ angular.module('appAngularjsApp')
 
       // If successful, reload search to get updated results
       $scope.modalInstance.result.then(function (success) {
-        if (success) {
-          $scope.doSearch($scope.statusFilter, $scope.pager.skip);
-        }
+        
       });
     };
   });
