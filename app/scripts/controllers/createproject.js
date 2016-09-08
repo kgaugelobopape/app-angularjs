@@ -9,9 +9,8 @@
  */
 angular.module('appAngularjsApp')
   .controller('CreateprojectCtrl', function ($scope, $modalInstance) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    
+    $scope.cancel = function () {
+      $modalInstance.dismiss('cancel');
+    };
   });
