@@ -33,7 +33,6 @@ angular.module('appAngularjsApp')
         console.log(data);
       });
 
-    // Open a modal where the owner can quickly be reassigned
     $scope.openModal = function ($event, pk, type) {
       $event.preventDefault();
       $event.stopPropagation();
