@@ -33,7 +33,16 @@ angular.module('appAngularjsApp')
       },
 
       putProject: function (pk, data) {
-        return $http.get('http://projectservice.staging.tangentmicroservices.com:80/api/v1/projects/' + pk, data, {
+        return $http.put('http://projectservice.staging.tangentmicroservices.com:80/api/v1/projects/' + pk, data, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Token ' + localStorageService.get('token')
+          }
+        });
+      },
+
+      deleteProject: function (pk) {
+        return $http.delete('http://projectservice.staging.tangentmicroservices.com:80/api/v1/projects/' + pk, {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Token ' + localStorageService.get('token')
