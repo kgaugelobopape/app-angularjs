@@ -8,7 +8,7 @@
  * Controller of the appAngularjsApp
  */
 angular.module('appAngularjsApp')
-  .controller('ProjectsCtrl', function ($scope, localStorageService, projectService) {
+  .controller('ProjectsCtrl', function ($scope, localStorageService, projectService, $modal) {
 
     $scope.token = localStorageService.get('token');
 
@@ -28,4 +28,39 @@ angular.module('appAngularjsApp')
         console.log(data);
       });
 
+    // Open a modal where the owner can quickly be reassigned
+    $scope.openModal = function ($event, pk, type) {
+      $event.preventDefault();
+      $event.stopPropagation();
+
+      if (type === 'edit') {
+        $scope.modalInstance = $modal.open({
+          templateUrl: 'views/modal/edit.html',
+          controller: 'EditprojectCtrl',
+          resolve: {
+            pk: function () {
+              return pk;
+            }
+          }
+        });
+      }
+      else {
+        $scope.modalInstance = $modal.open({
+          templateUrl: 'views/modal/delete.html',
+          controller: 'DeleteprojectCtrl',
+          resolve: {
+            pk: function () {
+              return pk;
+            }
+          }
+        });
+      }
+
+      // If successful, reload search to get updated results
+      $scope.modalInstance.result.then(function (success) {
+        if (success) {
+          $scope.doSearch($scope.statusFilter, $scope.pager.skip);
+        }
+      });
+    };
   });
