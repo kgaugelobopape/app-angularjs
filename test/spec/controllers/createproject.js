@@ -67,6 +67,8 @@ describe('Controller: CreateprojectCtrl', function () {
         expect(data).toEqual('response');
         expect(scope.error).toEqual('response');
       });
+
+      $httpBackend.flush();
   });
 
 
