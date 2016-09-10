@@ -14,10 +14,6 @@ angular.module('appAngularjsApp')
     $scope.error = '';
     $scope.success = '';
 
-    $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
-    };
-
     $scope.project = {
       title: '',
       description: '',
@@ -43,5 +39,9 @@ angular.module('appAngularjsApp')
           $scope.creating = false;
           $scope.error = data;
         });
+    };
+
+    $scope.cancel = function () {
+      $modalInstance.dismiss('cancel');
     };
   });
