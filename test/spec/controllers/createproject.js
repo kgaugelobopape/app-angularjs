@@ -46,12 +46,11 @@ describe('Controller: CreateprojectCtrl', function () {
 
   it('should be configured to create a project', function () {
 
-    $httpBackend.expectPOST('http://projectservice.staging.tangentmicroservices.com:80/api/v1/projects/', { title: 'mockTitle', description: 'Unit testing', start_date: '2015-09-09', end_date: '2016-09-09', is_billable: 'yes', is_active: 'yes' })
-      .respond('response');
-
     scope.submit();
+
     expect(scope.creating).toEqual(true);
-    projectService.postProject()
+    
+    projectService.postProject({ project: "mockProject"})
       .success(function (data, status) {
 
         expect(status).toEqual(201);
@@ -61,15 +60,11 @@ describe('Controller: CreateprojectCtrl', function () {
         expect(scope.success).toEqual(true);
         expect(scope.project).toBeNull();
       })
-      .error(function(){
+      .error(function () {
         expect(scope.creating).toBe(false);
         expect(status).toEqual(201);
         expect(data).toEqual('response');
         expect(scope.error).toEqual('response');
       });
-
-      $httpBackend.flush();
   });
-
-
 });
