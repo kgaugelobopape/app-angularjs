@@ -33,9 +33,7 @@ angular.module('appAngularjsApp')
         console.log(data);
       });
 
-    $scope.openModal = function ($event, pk, type) {
-      $event.preventDefault();
-      $event.stopPropagation();
+    $scope.openModal = function (pk, type) {
 
       if (type === 'edit') {
         $scope.modalInstance = $modal.open({
@@ -65,10 +63,5 @@ angular.module('appAngularjsApp')
           }
         });
       }
-
-      // If successful, reload search to get updated results
-      $scope.modalInstance.result.then(function (success) {
-        
-      });
     };
   });
