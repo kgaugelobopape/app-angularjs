@@ -59,6 +59,9 @@ describe('Controller: CreateprojectCtrl', function () {
         expect(scope.creating).toEqual(false);
         expect(scope.success).toEqual(true);
         expect(scope.project).toBeNull();
+
+        timeout.flush();
+        route.flush();
       })
       .error(function () {
         expect(scope.creating).toBe(false);
