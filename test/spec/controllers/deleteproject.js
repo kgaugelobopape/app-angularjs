@@ -54,7 +54,7 @@ describe('Controller: DeleteprojectCtrl', function () {
 
   it('should delete a project', function(){
     scope.submit();
-
+    
     expect(scope.deleting).toEqual(true);
 
     projectService.deleteProject(12345)
